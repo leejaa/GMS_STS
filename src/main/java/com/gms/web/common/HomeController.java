@@ -15,7 +15,7 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String index(Model model) {
-		logger.info("welcome home...");
+		logger.info("welcome home.....");
 		return "public:common/home.tiles";
 	}
 	
