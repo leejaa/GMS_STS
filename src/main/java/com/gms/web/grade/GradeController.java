@@ -15,21 +15,25 @@ public class GradeController {
 	
 	@RequestMapping("/move_write")
 	public String goWrite(Model model) {
-		return "/grade/write";
+		logger.info("move_write 진입..");
+		return "grade:grade/write.tiles";
 	}
 	
 	@RequestMapping("/move_update")
 	public String goUpdate(Model model) {
-		return "/grade/update";
+		logger.info("move_update 진입..");
+		return "grade:grade/update.tiles";
 	}
 	
 	@RequestMapping("/move_list")
 	public String goList(Model model) {
-		return "/grade/list";
+		logger.info("move_list 진입..");
+		return "grade:grade/list.tiles";
 	}
 	
 	@RequestMapping("/move_delete")
 	public String goDeletet(Model model) {
-		return "/grade/delete";
+		logger.info("move_delete 진입..");
+		return "grade:grade/delete.tiles";
 	}
 }

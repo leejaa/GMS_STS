@@ -4,9 +4,9 @@
 
 var app=app || {};
 
-app.path=(function(){
-     var init=function(ctx){
-           app.session.init(ctx);
+app.path=(function(x){
+     var init=function(x){
+           app.session.init(x);
            onCreate();
      };
      var ctx=function(){
@@ -38,11 +38,11 @@ app.path=(function(){
      };
 })();
 app.session=(function(){
-     var init=function(ctx){
-           sessionStorage.setItem('ctx',ctx);
-           sessionStorage.setItem('js',ctx+'/resources/js');
-           sessionStorage.setItem('img',ctx+'/resources/img');
-           sessionStorage.setItem('css',ctx+'/resources/css');
+     var init=function(x){
+           sessionStorage.setItem('ctx',x);
+          /* sessionStorage.setItem('js',x);
+           sessionStorage.setItem('img',x);
+           sessionStorage.setItem('css',x);*/
      };
      var getPath=function(x){
            return sessionStorage.getItem(x);
@@ -83,6 +83,7 @@ app.controller=(function(){
 	};
 	
 	var moveTo=function(dir,action,page){
+		alert(dir+"/"+action+"_"+page);
 		location.href=app.path.ctx()+"/"+dir+"/"+action+"_"+page;
 	};
 	

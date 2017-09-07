@@ -15,26 +15,31 @@ public class BoardController {
 	
 	@RequestMapping("/move_write")
 	public String goWrite(Model model) {
-		return "/board/write";
+		logger.info("move_write 진입..");
+		return "board:board/write.tiles";
 	}
 	
 	@RequestMapping("/move_list")
 	public String goList(Model model) {
-		return "/board/list";
+		logger.info("move_list 진입..");
+		return "board:board/list.tiles";
 	}
 	
 	@RequestMapping("/move_update")
 	public String goUpdate(Model model) {
-		return "/board/update";
+		logger.info("move_update 진입..");
+		return "board:board/update.tiles";
 	}
 	
 	@RequestMapping("/move_detail")
 	public String goDetail(Model model) {
-		return "/board/detail";
+		logger.info("move_detail 진입..");
+		return "board:board/detail.tiles";
 	}
 	
 	@RequestMapping("/move_delete")
 	public String goDelete(Model model) {
+		logger.info("move_delete 진입..");
 		return "/board/delete";
 	}
 }
