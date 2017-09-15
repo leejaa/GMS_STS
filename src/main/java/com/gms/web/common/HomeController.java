@@ -20,7 +20,7 @@ public class HomeController {
 	public String index(Model model) {
 		logger.info("welcome home....");
 		model.addAttribute("path",PathFactory.create());
-		return "public:common/home.tiles";
+		return "index";
 	}
 	
 }

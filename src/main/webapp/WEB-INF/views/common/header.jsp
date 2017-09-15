@@ -65,7 +65,7 @@
   </div>
 </nav>
 <script>
-app.path.init('${path.ctx}');
-app.main.init();
+meta.common.init('${path.ctx}');
+meta.main.init();
 
 </script>
