@@ -9,13 +9,13 @@
 	            </div> 
 				<div class="main-login main-center">
 					<form class="form-horizontal" id="update_form">
-						
+						<input type="hidden" name="member_id" value="${student.member_id}"/>
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"/>
+									<input type="text" class="form-control" name="name" value="${student.name}"/>
 								</div>
 							</div>
 						</div>
@@ -25,7 +25,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"/>
+									<input type="text" class="form-control" name="email" value="${student.email}"/>
 								</div>
 							</div>
 						</div>
@@ -36,7 +36,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="phone" id="phone"/>
+									<input type="text" class="form-control" name="phone" value="${student.phone}"/>
 								</div>
 							</div>
 						</div>
@@ -46,7 +46,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="password" id="password" data-toggle="popover"/>
+									<input type="password" class="form-control" name="password" value="${student.password}" data-toggle="popover"/>
 								</div>
 								<span id="passwordInfo" class="hide">
 								    <ul>
@@ -72,7 +72,7 @@
 						</div>
 
 						<div class="form-group ">
-							<button id="updateBtn" type="button" class="btn btn-primary btn-lg btn-block login-button">UPDATE</button>
+							<button id="updateBtn" type="submit" class="btn btn-primary btn-lg btn-block login-button" onclick="app.controller.update()">UPDATE</button>
 						</div>
 					</form>
 				</div>
@@ -80,7 +80,6 @@
 		</div>
 		<script>
 		
-		memberUpdate.show();
 		
 		
 		</script>

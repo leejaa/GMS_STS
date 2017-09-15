@@ -155,4 +155,6 @@ update member set gender='female';
 
 alter table member add column gender char(20);
 
+select * from student;
+
 

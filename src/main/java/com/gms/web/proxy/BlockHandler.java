@@ -1,11 +1,12 @@
 package com.gms.web.proxy;
 
-import com.gms.web.command.CommandDTO;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class BlockHandler{
 
-	public static int[] attr(PageProxy pxy){
-		CommandDTO cmd=new CommandDTO();
+	public int[] attr(PageProxy pxy){
 		int[] result=new int[6];
 		int theNumberOfPage=0,startPage=1,endPage=1;
 		theNumberOfPage=(pxy.getTheNumberOfRows()%pxy.getPageSize())==0?pxy.getTheNumberOfRows()/pxy.getPageSize():pxy.getTheNumberOfRows()/pxy.getPageSize()+1;

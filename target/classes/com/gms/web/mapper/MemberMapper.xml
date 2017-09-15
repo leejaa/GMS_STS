@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gms.web.mapper.MemberMapper">
+	<select id="count" resultType="string">
+		select count(*) as count from student
+	</select>
+	<select id="login" resultType="com.gms.web.member.MemberDTO" parameterType="com.gms.web.command.CommandDTO">
+		select * from student where member_id like #{member_id}
+	</select>
+	
+	<select id="selectAll" resultType="com.gms.web.member.MemberDTO" parameterType="com.gms.web.command.CommandDTO">
+		select t.* from (select @rownum:=@rownum+1 num,s.* from student s,(select @rownum:=0) r) t where num between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectByName" resultType="com.gms.web.member.MemberDTO" parameterType="com.gms.web.command.CommandDTO">
+		select t.* from (select @rownum:=@rownum+1 num,s.* from student s,(select @rownum:=0) r) t where name like #{search}
+	</select>
+	
+	<select id="selectById" resultType="com.gms.web.member.MemberDTO" parameterType="com.gms.web.command.CommandDTO">
+		select member_id,name,password,ssn,regdate,subj_id,phone,email,profile,title,gender from student where member_id like #{member_id}
+	</select>
+	
+	<delete id="delete" parameterType="com.gms.web.command.CommandDTO">
+		delete from member where member_id like #{member_id}
+	</delete>
+	<update id="update" parameterType="java.util.Map">
+		update member set name=#{name},password=#{password},phone=#{phone},email=#{email} where member_id=#{member_id}
+	</update>
+	<insert id="insert" parameterType="com.gms.web.member.MemberDTO">
+		insert into member(member_id,name,password,ssn,regdate,subj_id,phone,email,profile,gender)
+		values(#{member_id},#{name},#{password},#{ssn},now(),#{subj_id},#{phone},#{email},'default.jpg',#{gender})
+	</insert>
+</mapper>
+

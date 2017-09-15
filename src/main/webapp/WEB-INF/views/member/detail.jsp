@@ -9,23 +9,23 @@
                 </div>
                 <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
                     <div class="" style="border-bottom:1px solid black">
-                      <h2>${requestScope.student.name} 님의 프로필</h2>&nbsp;&nbsp;&nbsp;&nbsp;<button id="update">정보수정</button>
+                      <h2>${student.name} 님의 프로필</h2>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="app.controller.goUpdate()">정보수정</button>
                     </div>
                       <hr>
                     <div class="col-md-8">  
                     <ul class=" details">
-                      <li><p id="member_id"><span class="glyphicon glyphicon-credit-card one" style="width:50px;"></span>${requestScope.student.member_id}</p></li>
-                      <li><p id="phone"><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>${requestScope.student.phone}</p></li>
-                      <li><p id="email"><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>${requestScope.student.email}</p></li>
-                      <li><p id="gender"><span class="glyphicon glyphicon-credit-card one" style="width:50px;"></span>${requestScope.student.gender}</p></li>
-                      <li><p id="name"><span class="glyphicon glyphicon-credit-card one" style="width: 50px;"></span>${requestScope.student.name}</p></li>
-                      <li><p id="password"><span class="glyphicon glyphicon-credit-card one" style="width: 50px;"></span>${requestScope.student.password}</p></li>
+                      <li><p id="member_id"><span class="glyphicon glyphicon-credit-card one" style="width:50px;"></span>${student.member_id}</p></li>
+                      <li><p id="phone"><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>${student.phone}</p></li>
+                      <li><p id="email"><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>${student.email}</p></li>
+                      <li><p id="gender"><span class="glyphicon glyphicon-credit-card one" style="width:50px;"></span>${student.gender}</p></li>
+                      <li><p id="name"><span class="glyphicon glyphicon-credit-card one" style="width: 50px;"></span>${student.name}</p></li>
+                      <li><p id="password"><span class="glyphicon glyphicon-credit-card one" style="width: 50px;"></span>${student.password}</p></li>
                     </ul>
                     </div>
                     <div class="col-md-4">  
-                      <div class="col-sm-5 col-xs-6 tital " >Birthday:</div><div class="col-sm-7 col-xs-6 " id="ssn">${requestScope.student.ssn}</div>
+                      <div class="col-sm-5 col-xs-6 tital " >Birthday:</div><div class="col-sm-7 col-xs-6 " id="ssn">${student.ssn}</div>
                       <div class="clearfix"></div><div class="bot-border"></div>
-                      <div class="col-sm-5 col-xs-6 tital " >Gender:</div><div class="col-sm-7 col-xs-6 " id="gender">${requestScope.student.gender}</div>
+                      <div class="col-sm-5 col-xs-6 tital " >Gender:</div><div class="col-sm-7 col-xs-6 " id="gender">${student.gender}</div>
                       <div class="clearfix"></div><div class="bot-border"></div>
                       <div class="col-sm-5 col-xs-6 tital " >Ethnicity:</div><div class="col-sm-7 col-xs-6 ">sdfsdfsdfsdfsdf</div>
                       <div class="clearfix"></div><div class="bot-border"></div>
@@ -82,7 +82,7 @@
       
       <script>
       
-      memberUpdate.init();
+     
 	
       </script>
      

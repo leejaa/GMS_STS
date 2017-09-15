@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="container">
   <h2>회원가입</h2>
-   <form method="post" id="join_form">
+   <form id="join_form">
       <div class="form-group">
       <label for="id">ID</label>
       <input type="text" class="form-control" id="member_id" placeholder="아이디를 입력하세요" name="member_id">
@@ -45,91 +45,37 @@
     <div class="form-group">
       <label for="subject">수강과목</label>
 	      <div class="checkbox">
-	  		<label><input type="checkbox" id="subject" name="subject" value="2005" checked="checked">java</label>
+	  		<label><input type="checkbox" id="subject" name="subject" value="1" checked="checked">java</label>
 			</div>
 		<div class="checkbox">
-	  		<label><input type="checkbox" id="subject" name="subject" value="2006" checked="checked">javascript</label>
+	  		<label><input type="checkbox" id="subject" name="subject" value="2" checked="checked">javascript</label>
 		</div>
 		<div class="checkbox">
-	  		<label><input type="checkbox" id="subject" name="subject" value="2007">html</label>
+	  		<label><input type="checkbox" id="subject" name="subject" value="3">html</label>
 		</div>
 		<div class="checkbox">
-	  		<label><input type="checkbox" id="subject" name="subject" value="2008">css</label>
+	  		<label><input type="checkbox" id="subject" name="subject" value="4">css</label>
 		</div>
 		<div class="checkbox">
-	  		<label><input type="checkbox" id="subject" name="subject" value="2009">phython</label>
+	  		<label><input type="checkbox" id="subject" name="subject" value="5">phython</label>
 		</div>
 		<div class="checkbox">
-	  		<label><input type="checkbox" id="subject" name="subject" value="2010">c</label>
+	  		<label><input type="checkbox" id="subject" name="subject" value="6">c</label>
 		</div>
 		<div class="checkbox">
-	  		<label><input type="checkbox" id="subject" name="subject" value="2011">c++</label>
+	  		<label><input type="checkbox" id="subject" name="subject" value="7">c++</label>
 		</div>
     </div>
 	<input type="hidden" id=profile name="profile" value="profile"/>
     <input type="hidden" name="action" value="join"/>
     <input type="hidden" name="page" value="main"/>
-    <button type="submit" class="btn btn-danger" onclick="joinAlert()">전송</button>
+    <button type="submit" class="btn btn-danger" id="join">전송</button>
   </form>
    
 </div>
 </body>
 <script>
-window.onload=mainLoad();
-function joinAlert(){
-	var member_id=document.getElementById("member_id").value;
-	var password=document.getElementById("password").value;
-	var name=document.getElementById("name").value;
-	var email=document.getElementById("email").value;
-	var phone=document.getElementById("phone").value;
-	var ssn=document.getElementById("ssn").value;
-	var gender=document.getElementById("gender").value;
-	var major=document.getElementById("major").value;
-	var subject=document.getElementById("subject").value;
-	
-	if(member_id===""){
-		alert("아이디를 입력해주세요");
-		return false;
-	}
-	if(password===""){
-		alert("비밀번호를 입력해주세요");
-		return false;
-	}
-	if(name===""){
-		alert("이름을 입력해주세요");
-		return false;
-	}
-	if(email===""){
-		alert("이메일을 입력해주세요");
-		return false;
-	}
-	if(phone===""){
-		alert("휴대폰번호를 입력해주세요");
-		return false;
-	}
-	if(ssn===""){
-		alert("주민등록번호를 입력해주세요");
-		return false;
-	}
-	if(gender===""){
-		alert("성별을 입력해주세요");
-		return false;
-	}
-	if(major===""){
-		alert("전공을 입력해주세요");
-		return false;
-	}
-	if(subject===""){
-		alert("수강과목을 입력해주세요");
-		return false;
-	}
-	
-	var form=document.getElementById("join_form");
-	form.method="post";
-	form.action="${ctx}/member.do";
-	
-	return true;
-}
+app.member.init();
 </script>
 
 </html>

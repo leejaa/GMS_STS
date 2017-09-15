@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 
 import com.gms.web.constant.Extension;
 import com.gms.web.constant.Path;
+import com.gms.web.member.MemberDTO;
 
 import lombok.Data;
 
 
 @Data @Component @Lazy
 public class CommandDTO{
-	protected String action,pageNumber,view;
-	protected String dir,startRow,endRow,page,column,search,member_id,password;
-	
+	protected String dir,startRow,endRow,page,column,search,member_id,password,action,pageNumber,view;
+	protected MemberDTO member;
 	public void setPageNumber(String pageNumber) {
 		this.pageNumber =(pageNumber==null)?"1":pageNumber;
 	}

@@ -54,32 +54,49 @@ app.session=(function(){
      };
 })();
 app.member=(function(){
-     var init=function(){
-           $('#loginBtn').on('click',function(){
-                alert('로그인 버튼 click');
-          if($('#member_id').val()===""){
-                alert('ID 를 입력해 주세요');
-                return false;
-          }
-          if($('#password').val()===""){
-                alert('PASS 를 입력해 주세요');
-                return false;
-          }
-          $('#login_box').attr('action',app.ctx()+"/member.do");
-          $('#login_box').attr('method',"post");
-          return true;
-           }); /*function(){} 이 이벤트 핸들러가 된다.*/
-     };   
- 
-     return {
-           init : init //생성자는 항상 오픈해야 한다
-     };
+    var init=function(){
+    	join();
+    	login();
+    };
+    
+    var join=function(){
+    	$('#join').on('click',function(){
+    		alert('join click...');
+    		$('#join_form').attr('action',app.path.ctx()+"/member/join");
+    		$('#join_form').attr('method',"post");
+    	});
+    };
+    
+    var login=function(){
+    	 $('#loginBtn').on('click',function(){
+         	   alert('click');
+           if($('#member_id').val()===""){
+                 alert('ID 를 입력해주세요');
+                 return false;
+           }
+           if($('#password').val()===""){
+                 alert('PASS 를 입력해 주세요');
+                 return false;
+           }
+           $('#login_box').attr('action',app.path.ctx()+"/member/login");
+           $('#login_box').attr('method',"post");
+           return true;
+            }); /*function(){} 이 이벤트 핸들러가 된다.*/
+    };
+    return {
+          init : init
+    };
 })();
 
 app.controller=(function(){
 	
+	var list=function(pageNumber){
+		location.href=app.path.ctx()+"/member/move_list?search=null&pageNumber="+pageNumber;
+	};
+	
 	var detail=function(id){
-		location.href=app.path.ctx()+"/member/move/detail?member_id="+id;
+		alert(id);
+		location.href=app.path.ctx()+"/member/detail?member_id="+id;
 	};
 	
 	var moveTo=function(dir,action,page){
@@ -87,20 +104,42 @@ app.controller=(function(){
 		location.href=app.path.ctx()+"/"+dir+"/"+action+"_"+page;
 	};
 	
-	var Delete=function(dir,action){
-		var id=prompt("탈퇴할 회원 아이디 입력..","ID");
-		location.href=app.path.ctx()+"/"+dir+".do?action="+action+"&id="+id;
+	var Delete=function(x){
+		alert('탈퇴할 회원 : '+x);
+		location.href=app.path.ctx()+"/member/delete?member_id="+x;
 	};
 	
 	var logout=function(){
 		location.href=app.path.ctx()+"/common/logout/main";
 	};
 	
+	var search=function(){
+		
+		alert('search click ..');
+		
+		var search=$('#search').val();
+		location.href=app.path.ctx()+"/member/move_list?search="+search+"&pageNumber=1";
+	};
+	
+	var update=function(){
+		alert('update click ..');
+		$('#update_form').attr('action',app.path.ctx()+"/member/update");
+        $('#update_form').attr('method',"post");
+	};
+	
+	var goUpdate=function(){
+		location.href=app.path.ctx()+"/member/go_update";
+	};
+	
 	return {
 		detail : detail,
 		moveTo : moveTo,
 		Delete : Delete,
-		logout : logout
+		logout : logout,
+		list : list,
+		search : search,
+		update : update,
+		goUpdate : goUpdate
 	};
 })();
 
@@ -137,7 +176,7 @@ app.main=(function(){
 		});
 
 		$("#ul1").children().eq(0).on('click',function(){
-			app.controller.moveTo('member','move','list');
+			app.controller.list('1');
 		});
 		
 		$("#ul1").children().eq(1).on('click',function(){
@@ -175,59 +214,9 @@ app.main=(function(){
 })();
 	
 	
-app.memberUpdate=(function(){
-		var init=function(){
-			onCreate();
-		};
-		var onCreate=function(){
-			setContentView();
-			update();
-		};
-		var setContentView=function(){
-			$("#update").on('click',function(){
-				
-			var member_id=$("#member_id").text();
-			var phone=$("#phone").text();
-			var email=$("#email").text();
-			var name=$("#name").text();
-			var gender=$("#gender").text();
-			var ssn=$("#ssn").text();
-			var password=$("#password").text();
-			
-				sessionStorage.setItem('member_id',member_id);
-				sessionStorage.setItem('phone',phone);
-				sessionStorage.setItem('email',email);
-				sessionStorage.setItem('name',name);
-				sessionStorage.setItem('gender',gender);
-				sessionStorage.setItem('ssn',ssn);
-				sessionStorage.setItem('password',password);
-				
-				$(location).attr("href",app.ctx()+"/member.do?action=move&page=update");
-			
-			});
-		};
-		var show=function(){
-			
-			$("#phone").val(sessionStorage.getItem('phone'));
-			$("#email").val(sessionStorage.getItem('email'));
-			$("#name").val(sessionStorage.getItem('name'));
-			$("#password").val(sessionStorage.getItem('password'));
-			
-		};
-		var update=function(){
-			$('#updateBtn').on('click',function(){
-				alert('수정할 아이디 : '+sessionStorage.getItem('member_id'));
-				var phone=$('#phone').val();
-				var email=$('#email').val();
-				var name=$('#name').val();
-				
-			});
-		};
-		return {
-			init : init,
-			show : show
-		};
-	})();
+
+
+
 
 app.grade=(function(){
 	var init=function(){};

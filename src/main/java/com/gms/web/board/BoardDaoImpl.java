@@ -6,8 +6,9 @@ import java.util.List;
 
 import com.gms.web.constant.Database;
 import com.gms.web.constant.SQL;
+import com.gms.web.mapper.BoardMapper;
 
-public class BoardDaoImpl implements BoardDao{
+public class BoardDaoImpl implements BoardMapper{
 List<BoardDTO> articles;
 BoardDTO article;
 

@@ -52,12 +52,12 @@
     
      <ul class="nav navbar-nav navbar-right">
       <c:choose>
-		<c:when test="${empty sessionScope.user}">
+		<c:when test="${empty user}">
       <li><a id="member_join"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
       <li><a id="login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
         </c:when>
         <c:otherwise>
-        <li><a onclick="detail()"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;${sessionScope.user.name}님</a></li>
+        <li><a onclick="detail()"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;${user.name}님</a></li>
 		 <li><a id="logout"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a></li>
 		</c:otherwise>
 	</c:choose>
